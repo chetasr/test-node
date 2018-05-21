@@ -13,9 +13,9 @@ class AmDelegate(AnyMeshDelegateProtocol):
     def received_msg(self, anymesh, message):
         msg = message.data
         if msg[0] == 'stdout':
-            print message.data[7:].rstrip()
+            print ' '.join(msg[1:])
         elif msg[0] == 'msg':
-            print msg[4:]
+            print msg[1:]
         else:
             print 'unhandled: %s' % msg
 
@@ -24,6 +24,7 @@ any_mesh = AnyMesh(raw_input('server name: '), [], AmDelegate())
 
 while True:
     r = raw_input('> ').split()
+    print r[1:]
     any_mesh.request(r[0], r[1:])
 
 
