@@ -12,7 +12,7 @@ class AmDelegate(AnyMeshDelegateProtocol):
     def received_msg(self, anymesh, message):
         msg = message.data
         if msg[0] == 'cmd':
-            any_mesh.request(message.sender, 'stdout '+subprocess.check_output(msg[1:])
+            any_mesh.request(message.sender, 'stdout '+subprocess.check_output(msg[1:]))
 
         elif msg[0] == 'msg':
             print msg[1:]
