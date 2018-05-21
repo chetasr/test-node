@@ -11,7 +11,11 @@ class AmDelegate(AnyMeshDelegateProtocol):
         pass
 
     def received_msg(self, anymesh, message):
-        print message.data.rstrip()
+        msg = message.data
+        if msg.startswith('stdout'):
+            print message.data[7:].rstrip()
+        else:
+            print 'unhandled: %s' % msg
 
 
 any_mesh = AnyMesh('server', [], AmDelegate())
