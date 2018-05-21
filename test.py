@@ -18,5 +18,5 @@ class AmDelegate(AnyMeshDelegateProtocol):
             print msg[4:]
             
 
-any_mesh = AnyMesh('node', [], AmDelegate())
+any_mesh = AnyMesh(raw_input('node name: '), [], AmDelegate())
 any_mesh.run()
